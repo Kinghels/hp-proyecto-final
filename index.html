@@ -1,0 +1,218 @@
+<html>
+<head>
+<title>DEMI Salud</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/angular-csp.css">
+    <link rel="stylesheet" href="css/angular-ui-notification.min.css">
+</head>
+<body ng-app="myApp">
+
+<div ng-controller="SearchController">
+	
+	<div class="col-md-6 col-md-offset-3">
+         
+                                <form class="form-horizontal" role="form">
+								  <div class="form-group">
+                                    <label for="contain">NroAfiliado</label>
+                                    <input class="form-control" type="text" ng-model="nroAfiliadoSearch"/>
+                                  </div>
+								  <div class="form-group">
+                                    <label for="contain">NombreApellido</label>
+                                    <input class="form-control" type="text" ng-model="nombreYApellidoSearch"/>
+                                  </div>
+								  <div class="form-group">
+                                    <label for="contain">NroDocumento</label>
+                                    <input class="form-control" type="text" ng-model="nroDocumentoSearch"/>
+                                  </div>
+                                  <button type="submit" class="btn btn-primary" ng-click="filtrarAfiliados()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                </form>
+	</div>
+
+<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%" ng-show="afiliadosFiltrados.length > 0">
+        <thead>
+            <tr>
+                <th>NroAfiliado</th>
+                <th>NombreApellido</th>
+                <th>NroDocumento</th>
+                <th>Habilitado</th>
+				<th>Ver</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="afiliado in afiliadosFiltrados">
+                <td>{{afiliado.NroAfiliado}}</td>
+				<td>{{afiliado.NombreApellido}}</td>
+				<td>{{afiliado.NroDocumento}}</td>
+				<td><input type="checkbox" ng-model="afiliado.Habilitado" disabled></td>
+				<td>
+				<button ng-show="afiliado.Activo" type="button" class="btn btn-primary" ng-click="verAfiliado(afiliado)">Ver</button>
+				</td>
+            </tr>
+        </tbody>
+</table>
+</div>
+
+<div ng-controller="ProfileController">		
+	<div ng-show="afiliado">
+		<div id="datosPersonales" class="col-md-12">
+			<h2>Datos Personales</h2>
+			<div class="col-md-12" style="background-color: #e9ecef;">
+				<div class="col-md-3">			
+					<h4>Nro. Afiliado</h4>
+					<h5>{{afiliado.NroAfiliado}}</h5>
+				</div>
+				<div class="col-md-3">
+					<h4>Nro. Documento</h4>
+					<h5>{{afiliado.NroDocumento}}</h5>
+				</div>
+				<div class="col-md-3">
+					<h4>Nombre y Apellido</h4>
+					<h5>{{afiliado.NombreApellido}}</h5>
+				</div>
+				<div class="col-md-3">
+					<h4>Fecha de Nacimiento</h4>
+					<h5>{{afiliado.FechaNacimiento}}</h5>
+				</div>
+				<div class="col-md-3">
+					<h4>Domicilio</h4>
+					<h5>{{afiliado.Domicilio}}</h5>
+				</div>			
+				<div class="col-md-3">
+					<h4>Localidad</h4>
+					<h5>{{afiliado.Localidad}}</h5>
+				</div>
+				<div class="col-md-3">			
+					<h4>Plan</h4>
+					<h5>{{afiliado.Plan.Descripcion}}</h5>
+				</div>
+			</div>
+		</div>
+		<div id="autorizaciones" class="col-md-12">
+			<div>
+				<div style="float: left;">
+					<h2>Autorizaciones</h2>
+				</div>
+				<div style="float: right; padding-top: 2%;">
+				<!--ng-click="toggleModal()"-->
+					<button type="submit" class="btn btn-primary" ng-show="afiliado.Habilitado">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>
+				</div>
+			</div>
+			<table class="table table-striped table-bordered" style="clear: both;" cellspacing="0" width="100%" ng-show="afiliado.Autorizaciones.length > 0">
+		        <thead>
+		            <tr>
+		                <th>Nro. Autorizacion</th>
+		                <th>Fecha</th>
+		                <th>Prestación</th>
+		                <th>Observaciones</th>
+		                <th>Vigente</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <tr ng-repeat="autorizacion in afiliado.Autorizaciones">
+		                <td>{{autorizacion.NroAutorizacion}}</td>
+						<td>{{autorizacion.Fecha}}</td>
+						<td>{{autorizacion.Prestacion}}</td>
+						<td>{{autorizacion.Observaciones}}</td>
+						<td><input type="checkbox" class="disabled" ng-model="autorizacion.Vigente"></td>
+		            </tr>
+		        </tbody>
+			</table>
+			<div class="alert alert-info" style="clear: both;"  ng-show="afiliado.Autorizaciones.length == 0">
+				<strong>Informacion!</strong> No hay resultados para la busqueda
+			</div>
+		</div>
+		<div id="atenciones" class="col-md-12">
+			<h2>Atenciones</h2>		
+			<table class="table table-striped table-bordered" cellspacing="0" width="100%" ng-show="afiliado.atenciones.length > 0">
+		        <thead>
+		            <tr>
+		                <th>Nro. Autorización</th>
+		                <th>Fecha</th>
+		                <th>Observaciones</th>
+		                <th>Vigente</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <tr ng-repeat="atencion in afiliado.atenciones">
+		                <td>{{atencion.NroAtencion}}</td>
+						<td>{{atencion.Fecha}}</td>
+						<td>{{atencion.Observaciones}}</td>
+						<td><input type="checkbox" class="disabled" ng-readonly="true" ng-model="atencion.Vigente"></td>
+		            </tr>
+		        </tbody>
+			</table>
+			<div class="alert alert-info" ng-show="afiliado.atenciones.length == 0">
+				<strong>Informacion!</strong> No hay resultados para la busqueda
+			</div>
+		</div>
+		<div>		  
+		  <modal visible="showModal">
+		  	<form method="post" accept-charset="utf-8">
+		  		<div class="form-group">
+		            <label for="contain">Prestación</label>
+		            <div ng-repeat="n in newAutorizacionesIndex track by $index">
+		            	<input class="form-control" type="text" id="prestacionToAdd" /><span class="glyphicon glyphicon-plus" ng-click="addPrestacionClick(n)"></span><span class="glyphicon glyphicon-remove" ng-click="removePrestacion(n)"></span>
+		            </div>
+	            </div>
+	            <div>
+	            	<input type="button" class="btn btn-primary" name="btnSaveAutorizaciones" ng-click="saveAutorizaciones()" value="Crear Autorización">
+	            </div>
+		  	</form>		  	
+		  </modal>
+		</div>
+</div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular/angular-notify.js"></script>
+<script src="lib/angular/angular-ui-notification.min.js"></script>
+<script src="lib/lodash/lodash.js"></script>
+<script src="js/app.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/directives.js"></script>
+<script src="js/services.js"></script>
+<script type="text/javascript">
+    // Configuration
+
+    angular.module('notificationTest', ['ui-notification'])
+            .controller('notificationController', function($scope, Notification) {
+                $scope.primary = function() {
+                    Notification.primary("Primary notification (don't replace)");
+                };
+
+                $scope.error = function() {
+                    Notification.error("Error notification (don't replace)");
+                };
+
+                $scope.success = function() {
+                    Notification.success({
+                        message: "Success message (replace messages)",
+                        delay: 10000,
+                        replaceMessage: true
+                    });
+                };
+
+                $scope.info = function() {
+                    Notification.info({
+                        message: "Info message (replace messages)",
+                        delay: 10000,
+                        replaceMessage: true
+                    });
+                };
+
+                $scope.warning = function() {
+                    Notification.warning({
+                        message: "Warning message (replace messages)",
+                        delay: 10000,
+                        replaceMessage: true
+                    });
+                };
+            });
+
+</script>
+</html>

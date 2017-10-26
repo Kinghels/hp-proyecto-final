@@ -1,0 +1,68 @@
+[
+	{
+	    "AfiliadoId": 1,
+		"NroAfiliado": 6598,
+		"NroDocumento": 22222222,
+		"NombreApellido": "Andres Perez",
+		"Domicilio": "Zeballos 1354",
+		"FechaNacimiento": "19570127",
+		"PlanId": 1,
+		"Activo": true,
+		"Habilitado": true
+	},
+	{
+	    "AfiliadoId": 2,
+		"NroAfiliado": 6599,
+		"NroDocumento": 22222212,
+		"NombreApellido": "Roberto Perez",
+		"Domicilio": "Dorrego 2265",
+		"FechaNacimiento": "19570127",
+		"PlanId": 2,
+		"Activo": true,
+		"Habilitado": true
+	},
+	{
+	    "AfiliadoId": 3,
+		"NroAfiliado": 6600,
+		"NroDocumento": 12543658,
+		"NombreApellido": "Marta Pérez",
+		"Domicilio": "Reconquista 165",
+		"FechaNacimiento": "19570127",
+		"PlanId": 1,
+		"Activo": true,
+		"Habilitado": false
+	},
+	{
+	    "AfiliadoId": 4,
+		"NroAfiliado": 7463,
+		"NroDocumento": 12458956,
+		"NombreApellido": "Omar Inghels",
+		"Domicilio": "Zelaya 52",
+		"FechaNacimiento": "19570127",
+		"PlanId": 3,
+		"Activo": false,
+		"Habilitado": false
+	},
+	{
+	    "AfiliadoId": 5,
+		"NroAfiliado": 7654,
+		"NroDocumento": 35999254,
+		"NombreApellido": "Patricia Aguzzi",
+		"Domicilio": "Av. Caseros 2654",
+		"FechaNacimiento": "19570127",
+		"PlanId": 2,
+		"Activo": false,
+		"Habilitado": false
+	},
+	{
+	    "AfiliadoId": 6,
+		"NroAfiliado": 7444,
+		"NroDocumento": 35478207,
+		"NombreApellido": "Priscila Inghels",
+		"Domicilio": "Suipacha 152",
+		"FechaNacimiento": "19570127",
+		"PlanId": 1,
+		"Activo": true,
+		"Habilitado": false
+	}
+]

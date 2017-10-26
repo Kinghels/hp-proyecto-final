@@ -1,0 +1,46 @@
+[
+    {
+      "AutorizacionId": 1,
+      "NroAutorizacion": "1111-11111111",
+      "AfiliadoId": 1,
+      "PrestadorId": 1,
+      "Fecha": "20170522",
+      "Observaciones": "",
+      "ObservacionesAudit": "",
+      "Activo": true,
+      "Vigente": true
+    },
+    {
+      "AutorizacionId": 2,
+      "NroAutorizacion": "2222-22222222",
+      "AfiliadoId": 1,
+      "PrestadorId": 1,
+      "Fecha": "20170612",
+      "Observaciones": "",
+      "ObservacionesAudit": "",
+      "Activo": true,
+      "Vigente": true
+    },
+    {
+      "AutorizacionId": 3,
+      "NroAutorizacion": "3333-33333333",
+      "AfiliadoId": 1,
+      "PrestadorId": 2,
+      "Fecha": "20170615",
+      "Observaciones": "",
+      "ObservacionesAudit": "",
+      "Activo": true,
+      "Vigente": true
+    },
+    {
+      "AutorizacionId": 4,
+      "NroAutorizacion": "4444-44444444",
+      "AfiliadoId": 2,
+      "PrestadorId": 1,
+      "Fecha": "20170325",
+      "Observaciones": "",
+      "ObservacionesAudit": "",
+      "Activo": true,
+      "Vigente": false
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "PlanId": 1,
+        "Descripcion": "Demi I",
+        "Activo": true
+    },
+    {
+        "PlanId": 2,
+        "Descripcion": "Azul",
+        "Activo": true
+    },
+    {
+        "PlanId": 3,
+        "Descripcion": "AzulPlus",
+        "Activo": true
+    },
+    {
+        "PlanId": 4,
+        "Descripcion": "Demi OP",
+        "Activo": false
+    }
+]
